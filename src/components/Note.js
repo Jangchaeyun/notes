@@ -9,3 +9,5 @@ const Note = () => {
         </div>
     </div>;
 };
+
+export default Note;
