@@ -35,10 +35,15 @@ const App = () => {
     }
     const newNotes = [...notes, newNote];
     setNotes(newNotes);
+  };
+
+  const deleteNote = (id) => {
+    const newNotes = notes.filter((note) => note.id !== id);
+    setNotes(newNotes);
   }
 
   return <div className="container">
-    <NotesList notes={notes} handleAddNote={AddNote}/>
+    <NotesList notes={notes} handleAddNote={AddNote} handleDeleteNote={deleteNote}/>
   </div>
 }
 
