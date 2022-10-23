@@ -2,9 +2,12 @@ import { useState } from "react";
 
 const AddNote = ({ handleAddNote }) => {
     const [noteText, setNoteText] = useState('');
+    const characterLimit = 200;
 
     const hanldeChange = (event) => {
-        setNoteText(event.target.value);
+        if(characterLimit - event.target.value.length >= 0){
+            setNoteText(event.target.value);
+        }
     };
 
     const handleSaveClick = () => {
@@ -24,7 +27,7 @@ const AddNote = ({ handleAddNote }) => {
                 onChange={hanldeChange}>
             </textarea>
             <div className="note-footer">
-                <small>남은 글자 200</small>
+                <small>남은 글자 {characterLimit - noteText.length}</small>
                 <button className="save" onClick={handleSaveClick}>저장</button>
             </div>
         </div>
