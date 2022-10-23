@@ -6,28 +6,39 @@ const App = () => {
   const [notes, setNotes] = useState([
     {
       id: nanoid(),
-      text: "This is my first note!",
-      date: "2022/10/22",
+      text: "나의 첫 번째 노트!!",
+      date: "2022.10.22",
     },
     {
       id: nanoid(),
-      text: "This is my second note!",
-      date: "2022/10/22",
+      text: "나의 두 번째 노트!!",
+      date: "2022.10.22",
     },
     {
       id: nanoid(),
-      text: "This is my third note!",
-      date: "2022/10/22",
+      text: "나의 세 번째 노트!!",
+      date: "2022.10.22",
     },
     {
       id: nanoid(),
-      text: "This is my new note!",
-      date: "2022/10/22",
+      text: "나의 새로운 노트!!",
+      date: "2022.10.22",
     },
   ]);
 
+  const AddNote = (text) => {
+    const date = new Date();
+    const newNote = {
+      id: nanoid(),
+      text: text,
+      date: date.toLocaleDateString()
+    }
+    const newNotes = [...notes, newNote];
+    setNotes(newNotes);
+  }
+
   return <div className="container">
-    <NotesList notes={notes}/>
+    <NotesList notes={notes} handleAddNote={AddNote}/>
   </div>
 }
 
