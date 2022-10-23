@@ -49,12 +49,12 @@ const App = () => {
 		);
 	}, [notes]);
 
-  const AddNote = (text) => {
+  const addNote = (text) => {
     const date = new Date();
     const newNote = {
       id: nanoid(),
       text: text,
-      date: date.toLocaleDateString()
+      date: date.toLocaleDateString(),
     }
     const newNotes = [...notes, newNote];
     setNotes(newNotes);
@@ -74,7 +74,7 @@ const App = () => {
           notes={notes.filter((note) => 
             note.text.toLowerCase().includes(searchText)
           )}
-          handleAddNote={AddNote}
+          handleAddNote={addNote}
           handleDeleteNote={deleteNote}  
         />
       </div>
